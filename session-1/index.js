@@ -11,8 +11,10 @@ const server = http.createServer((request, response) => {
 
     if (request.url === "/status") {
         response.writeHead(200, {"Content-Type": "application/json"});
-        response.write(JSON.stringify(serverInfo))
-        response.end();
+        // response.write(JSON.stringify(serverInfo))
+        // response.end();
+        // or
+        response.end(JSON.stringify(serverInfo))
 
     } else {
         response.writeHead(200, {"Content-Type": "text/html"});
