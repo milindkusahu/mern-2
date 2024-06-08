@@ -26,16 +26,24 @@ const PORT = 8082;
 // });
 
 const server = http.createServer((request, response) => {
-
-    switch (request.url) {
-        case "/": response.writeHead(200, {"Content-Type": "text/html"}).end(`<h1>Hello from Server</h1>`);
-        break;
-        case "/currencies": response.writeHead(200, {"Content-Type": "application/json"}).end(JSON.stringify(currenciesData.data));
-        break;
-        default: response.writeHead(404, { "Content-Type": "application/json" }).end(JSON.stringify({message: "Not found" }));
-    }
+  switch (request.url) {
+    case "/":
+      response
+        .writeHead(200, { "Content-Type": "text/html" })
+        .end(`<h1>Hello from Server</h1>`);
+      break;
+    case "/currencies":
+      response
+        .writeHead(200, { "Content-Type": "application/json" })
+        .end(JSON.stringify(currenciesData.data));
+      break;
+    default:
+      response
+        .writeHead(404, { "Content-Type": "application/json" })
+        .end(JSON.stringify({ message: "Not found" }));
+  }
 });
 
 server.listen(PORT, () => {
-    console.log("Server is listening now...")
-})
+  console.log("Server is listening now...");
+});
