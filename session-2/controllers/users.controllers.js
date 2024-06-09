@@ -10,10 +10,10 @@ const searchUsers = (req, res) => {
   // Validation
   if (gender && !["male", "female"].includes(gender))
     return res
-      .send(400)
+      .status(400)
       .send({ message: "Gender must be either 'male' or 'female'" });
   if (age && isNaN(age))
-    return res.send(400).send({ message: "Age must be an Integer" });
+    return res.status(400).send({ message: "Age must be an Integer" });
 
   // Logic
   if (gender && age) {
@@ -37,7 +37,7 @@ const getUserById = (req, res) => {
   const { uuid } = req.params;
   const requestedUser = usersData.data.find((user) => user.login.uuid === uuid);
   if (requestedUser) return res.send(requestedUser);
-  //   res.send(404).send({ message: "User not found" });
+  //   res.status(404).send({ message: "User not found" });
   res.sendStatus(404);
 };
 
