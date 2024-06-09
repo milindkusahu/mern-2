@@ -6,7 +6,7 @@ const getUsers = (req, res) => {
 
 const searchUsers = (req, res) => {
   const { gender, age } = req.query;
-  
+
   // Validation
   if (gender && !["male", "female"].includes(gender))
     return res
@@ -14,7 +14,7 @@ const searchUsers = (req, res) => {
       .send({ message: "Gender must be either 'male' or 'female'" });
   if (age && isNaN(age))
     return res.send(400).send({ message: "Age must be an Integer" });
-  
+
   // Logic
   if (gender && age) {
     res.send(
