@@ -1,5 +1,13 @@
 const express = require("express");
-const { getCurrencies, getCurrencyBySymbol } = require("./controllers/currency.controllers")
+const {
+  getCurrencies,
+  getCurrencyBySymbol,
+} = require("./controllers/currency.controllers");
+const {
+  getUsers,
+  searchUsers,
+  getUserById,
+} = require("./controllers/users.controllers");
 const app = express();
 const PORT = 8082;
 
@@ -10,8 +18,13 @@ const PORT = 8082;
 
 app.get("/currencies", getCurrencies);
 
-//Dynamic Route
 app.get("/currencies/:symbol", getCurrencyBySymbol);
+
+app.get("/users", getUsers);
+
+app.get("/users/search", searchUsers);
+
+app.get("/users/:uuid", getUserById);
 
 app.listen(PORT, () => {
   console.log(`server running on PORT:${PORT}`);
